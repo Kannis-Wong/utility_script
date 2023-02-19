@@ -31,7 +31,7 @@
     <ComboBox Name="ComList2" HorizontalAlignment="Left" Height="35" Margin="180,262,0,0" VerticalAlignment="Top" Width="150"/>
 
     <GroupBox HorizontalAlignment="Left" Height="103" Header="Selection Zone Four" Margin="10,335,0,0" VerticalAlignment="Top" Width="700"/>
-    <TextBox Name="TextLogBox" HorizontalAlignment="Left" Height="428" Margin="715,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="540"/>
+    <TextBox Name="TextLogBox" HorizontalAlignment="Left" Height="428" Margin="715,10,0,0" TextWrapping="Wrap" Text="Logging" VerticalAlignment="Top" Width="540" IsReadOnly="True" VerticalScrollBarVisibility="Visible" TextAlignment="Left"/>
     </Grid>
 </Window>
 "@
@@ -46,7 +46,7 @@ function init_{
 }
 
 function main{
-    
+    $Global:xamGUI.ShowDialog() | Out-Null
 }
 
 main
