@@ -1,6 +1,7 @@
 <#
     Basic script to run the monitoring, which the duration will be following the user input or the default time settings. 
     The output format will be blg and txt file locating in the working path .\log folder, which blg file can be read from the Windows Performance Monitor
+    Binary builder: Invoke-PS2EXE -inputFile .\setup.ps1 -outputFile .\setup.exe -x64 -title "Sys_Performance_Monitoring" -description "This is the application for logging time to time CPU and GPU usage" -version "1.0.0" -noConfigFile -requireAdmin
 #>
 param (
     [Parameter(Mandatory=$false)]
@@ -52,7 +53,7 @@ function startMonitoring{
             "\Processor Information(_total)\% Processor Time",
             "\GPU Engine(*)\Utilization Percentage"
         )
-        Get-Counter -Counter $counterList -Continuous | Export-Counter -Path "$cPath\$name.blg" -Force -ErrorAction SilentlyContinue
+        Get-Counter -Counter $counterList -Continuous -ErrorAction SilentlyContinue | Export-Counter -Path "$cPath\$name.blg" -Force -ErrorAction SilentlyContinue
     }
     $stopWatch = New-Object -TypeName System.Diagnostics.Stopwatch
     $stopWatch.Start()
